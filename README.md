@@ -1,1 +1,1 @@
-# CapstoneBE
+# drf_jwt_capstone_backend
