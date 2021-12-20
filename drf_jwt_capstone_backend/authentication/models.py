@@ -12,3 +12,18 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     middle_name = models.CharField(max_length=20)
+    role = models.CharField(max_length=20)
+    
+class Business(models.Model):
+    title = models.CharField(max_length=100)
+    ownerId = models.IntegerField()
+    description = models.CharField(max_length=100)
+    phone_number = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+
+class Message(models.Model):
+    to_userId = models.IntegerField()
+    from_userId = models.IntegerField()
+    message = models.CharField(max_length=1000)
+        
