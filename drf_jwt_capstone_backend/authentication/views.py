@@ -23,6 +23,20 @@ class GetUser(APIView):
         serializer = RegistrationSerializer(users, many=True)
         return Response(serializer.data)
 
+    def get_object(self, pk):
+        try:
+            return User.objects.get(pk=pk)    
+        except:
+            raise status.HTTP_404_NOT_FOUND
+
+    def patch(self, request, pk):
+        user = self.get_object(pk)
+        serializer = RegistrationSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)            
+
 class GetBusiness(APIView):
 
     permission_classes = [AllowAny]

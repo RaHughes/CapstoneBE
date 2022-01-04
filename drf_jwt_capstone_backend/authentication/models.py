@@ -15,12 +15,12 @@ class User(AbstractUser):
     role = models.CharField(max_length=20)
     
 class Business(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
     ownerId = models.IntegerField()
-    description = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=100)
-    address = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    description = models.CharField(max_length=300)
+    phone_number = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
 
 class Message(models.Model):
     to_userId = models.IntegerField()
